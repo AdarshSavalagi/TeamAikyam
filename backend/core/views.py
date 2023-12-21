@@ -8,6 +8,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.db import IntegrityError
 from core.models import *
 from core.serializers import *
+from .Supportings.fetch_news import get_amount,get_share
+
 
 
 class index(APIView):
@@ -33,9 +35,19 @@ class index(APIView):
         consultancy_serializer = ConsultancySerializer(consultancies_queryset, many=True).data
         data['consultancySerializer'] = consultancy_serializer
 
+        data['spend']=get_amount()
+        data['share']=get_share()
+
+
         return Response(data)
 
 
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_details_stocks(request):
+    data=get_amount()
+    return Response(data)
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -48,7 +60,7 @@ def create_user(request):
         loan = request.data.get('loan', '')
         email = request.data.get('email', '')
         financial_goal = request.data.get('financial_goal', '')
-        password = request.data.get('financial_goal', '')
+        password = request.data.get('password', '')
         try:
             user = CustomUser.objects.create_user(
                 password=email, email=email, first_name=name, income=income, expense=expense, asset=asset, loan=loan, financial_goal=financial_goal)

@@ -4,6 +4,7 @@ import pandas as pd
 import joblib,os
 
 class CustomUser(AbstractUser):
+    
     level = models.IntegerField(blank=True,default=0)
     income = models.IntegerField(default=0)
     expense = models.IntegerField(default=0)
