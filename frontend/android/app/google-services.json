@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "323004927550",
+    "project_id": "gdschackathon-de879",
+    "storage_bucket": "gdschackathon-de879.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323004927550:android:f8ff2e3ba3ccbfbabf4b6f",
+        "android_client_info": {
+          "package_name": "com.example.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgeyL9nJNkrN4lBqdqbKsjLdchLWPNv0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,6 @@
 from django.db import models
+import firebase_admin
+from firebase_admin import credentials, messaging
 from django.contrib.auth.models import AbstractUser
 import pandas as pd
 import joblib,os
@@ -38,7 +40,21 @@ class Insurance(models.Model):
     level=models.IntegerField()
 
     def save(self,*args,**kwargs):
-        # send notifications
+        try:
+            cred = credentials.Certificate(
+                    "gdschackathon-de879-firebase-adminsdk-75ijc-7133a91a32.json")
+            firebase_admin.initialize_app(cred)
+        except:
+            pass
+        notification = messaging.Notification(
+            title=self.name,
+            body=self.description,
+        )
+        message = messaging.Message(
+            notification=notification,
+            topic='stocks'
+        )
+        messaging.send(message)
         super().save(*args,**kwargs)
 
 
@@ -49,7 +65,21 @@ class Consultancy(models.Model):
     level=models.IntegerField()
 
     def save(self,*args,**kwargs):
-        # send notifications
+        try:
+            cred = credentials.Certificate(
+                    "gdschackathon-de879-firebase-adminsdk-75ijc-7133a91a32.json")
+            firebase_admin.initialize_app(cred)
+        except:
+            pass
+        notification = messaging.Notification(
+            title=self.name,
+            body=self.description,
+        )
+        message = messaging.Message(
+            notification=notification,
+            topic='stocks'
+        )
+        messaging.send(message)
         super().save(*args,**kwargs)
 
 

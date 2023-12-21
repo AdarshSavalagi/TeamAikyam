@@ -55,11 +55,10 @@ def create_user(request):
     if request.method == 'POST':
         name = request.data.get('name', '')
         income = request.data.get('income', '')
-        expense = request.data.get('expense', '')
-        asset = request.data.get('asset', '')
+        asset = request.data.get('asset', '')   
         loan = request.data.get('loan', '')
-        email = request.data.get('email', '')
         financial_goal = request.data.get('financial_goal', '')
+        email = request.data.get('email', '')
         password = request.data.get('password', '')
         try:
             user = CustomUser.objects.create_user(
